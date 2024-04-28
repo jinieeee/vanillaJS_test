@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    height: 400px;
+    width: 600px;
+}
+
+.container > div:not(.record) {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.timer {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.button_list {
+    display: flex;
+}
+
+.button_list > button {
+    background-color: snow;
+    border: 1px solid black;
+    min-height: 50px;
+    margin: 4px 3px 4px 3px;
+    flex-grow: 1;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    font-size: 1.5rem;
+}
+
+.shortest {
+    color: green;
+}
+
+.longest {
+    color: red;
+}
