@@ -8,34 +8,32 @@
 <body>
     <div class="container">
         <div>
-            <div class="timer">
+            <div class="timer" id="timer">
                 00:000
             </div>
             <div class="button_area">
                 <!-- 시작 전 -->
-                <div class="button_list">
-                    <button class="button">시작</button>
+                <div class="button_list visible">
+                    <button class="button" id="start">시작</button>
                 </div>
                 <!-- 시작 후 -->
                 <div class="button_list">
-                    <button class="button">중단</button>
-                    <button class="button">랩</button>
+                    <button class="button" id="stop">중단</button>
+                    <button class="button" id="lap">랩</button>
                 </div>
                 <!-- 중단 -->
                 <div class="button_list">
-                    <button class="button">재시작</button>
-                    <button class="button">초기화</button>
+                    <button class="button" id="restart">재시작</button>
+                    <button class="button" id="initialize">초기화</button>
                 </div>
             </div>
         </div>
         <div class="record">
-            <ul class="record_list">
-                <li>랩 {index} 00:300</li>
-                <li class="shortest">랩 {index} 00:100</li>
-                <li class="longest">랩 {index} 03:000</li>
+            <ul class="record_list" id="record_list">
             </ul>
         </div>
     </div>
 </body>
-<script src="stop-watch..js" type="module"></script>
+<script type="module" src="stop-watch.js">
+</script>
 </html>
