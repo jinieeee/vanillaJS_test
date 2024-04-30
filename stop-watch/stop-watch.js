@@ -1,11 +1,13 @@
 let intervalId = 0;
-let now = 0;
+let start = 0;
+let stop = 0;
 let preLap = 0;
 let lapArray = [];
 let shortest = Number.MAX_SAFE_INTEGER;
 let longest = 0;
 
 function formatToLeadingZero(microSeconds) {
+    console.log(microSeconds);
     const microSecondsStr = microSeconds.toString();
     if(microSeconds < 10) {
         return `00:00${microSecondsStr}`;
@@ -23,13 +25,13 @@ function formatToLeadingZero(microSeconds) {
 function startStopWatch() {
     if(intervalId) return;
     intervalId = setInterval(function () {
-        now += 1;
-        document.getElementById('timer').innerText = formatToLeadingZero(now);
+        document.getElementById('timer').innerText = formatToLeadingZero(Date.now() - start);
     }, 1);
 }
 
 function lapTime() {
     let lapHtml = document.createElement("li");
+    let now = Date.now();
     let lap = now - preLap;
     preLap = now;
     lapArray.push(lap);
@@ -56,7 +58,7 @@ function lapCss() {
 
 function initialize() {
     intervalId = 0;
-    now = 0;
+    start = 0;
     preLap = 0;
     lapArray = [];
     shortest = Number.MAX_SAFE_INTEGER;
@@ -93,18 +95,23 @@ function changeStatus(status) {
 
 function init() {
     document.getElementById("start").onclick = function () {
+        start = Date.now();
+        preLap = Date.now();
         startStopWatch();
         changeStatus("start")
     }
 
     document.getElementById("stop").onclick = function () {
-        lapTime();
         clearInterval(intervalId);
+        lapTime();
+        stop = Date.now();
         intervalId = 0;
         changeStatus("stop")
     }
 
     document.getElementById("restart").onclick = function () {
+        start = new Date( Date.now() - (stop - start));
+        preLap = new Date(Date.now() - (stop - start));
         startStopWatch();
         changeStatus("start");
     }
